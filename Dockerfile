@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Install playwright
 RUN playwright install
+RUN playwright install-deps
 
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
