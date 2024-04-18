@@ -1,0 +1,15 @@
+# Python
+*.pyc
+__pycache__/
+venv/
+.env
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Docker
+.dockerignore
+docker-compose.yml
+docker-compose.override.yml
+.docker/
