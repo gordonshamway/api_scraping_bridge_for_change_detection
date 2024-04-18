@@ -21,4 +21,5 @@ ENV COMPOSER_EMAIL user@email.com
 ENV COMPOSER_PASSWORD some_password
 
 # Run app.py when the container launches
-CMD ["python", "api.py"]
+# CMD ["python", "api.py"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
