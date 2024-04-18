@@ -7,6 +7,7 @@ load_dotenv('..\.env')
 
 username = os.getenv('COMPOSER_EMAIL')
 password = os.getenv('COMPOSER_PASSWORD')
+timeout = os.getenv('COMPOSER_TIMEOUT_SECONDS')
 
 # css selectors
 email_field_selector = 'input[type="email"]'
@@ -58,8 +59,8 @@ async def get_website_content(symphony_id):
         await page.goto(symphony_link)
         await page.is_visible(holdings_table_css_selector)
 
-        #wait for 5 seconds until all allocations are loaded
-        await page.wait_for_timeout(5000) 
+        #wait for 10 seconds until all allocations are loaded
+        await page.wait_for_timeout(int(timeout) * 1000) 
         #extract current holdings
         html = await page.inner_html(holdings_table_css_selector)
         change_date = await page.inner_html(change_line_css_selector)
