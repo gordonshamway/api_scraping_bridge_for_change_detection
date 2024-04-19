@@ -43,7 +43,7 @@ async def rebuild_into_clean_html_table(html, change_date):
     return html_table
     
 
-async def get_website_content(symphony_id):
+async def get_composer_content(symphony_id):
     symphony_link = f'https://app.composer.trade/symphony/{symphony_id}/details'
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, slow_mo=50)
@@ -68,5 +68,5 @@ async def get_website_content(symphony_id):
         return(clean_html)
     
 if __name__ == '__main__':
-    website = get_website_content('v9joaHizwHRlN4twG0S8')
+    website = get_composer_content('v9joaHizwHRlN4twG0S8')
     print(website)

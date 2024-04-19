@@ -20,6 +20,10 @@ EXPOSE 8000
 # Define environment variable
 ENV COMPOSER_EMAIL user@email.com
 ENV COMPOSER_PASSWORD some_password
+ENV COMPOSER_TIMEOUT_SECONDS 10
+ENV PV_EMAIL user@email.com
+ENV PV_PASSWORD some_password
+ENV PV_TIMEOUT_SECONDS 10
 
 # Run app.py when the container launches
 # CMD ["python", "api.py"]
