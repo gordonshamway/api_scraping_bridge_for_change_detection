@@ -46,7 +46,7 @@ async def rebuild_into_clean_html_table(html, name):
 async def get_pv_content(link, name):
     login_link = f'https://www.portfoliovisualizer.com/login'
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=False, slow_mo=50)
+        browser = await p.chromium.launch(headless=True, slow_mo=50)
         page = await browser.new_page()
         #login in
         await page.goto(login_link)
