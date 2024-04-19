@@ -2,6 +2,7 @@ import configparser, os
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
+from fake_useragent import UserAgent
 
 load_dotenv('..\.env')
 
@@ -45,13 +46,16 @@ async def rebuild_into_clean_html_table(html, name):
 
 async def get_pv_content(link, name):
     login_link = f'https://www.portfoliovisualizer.com/login'
+    ua = UserAgent()
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, slow_mo=50)
         page = await browser.new_page()
         #login in
+        context = await browser.new_context(user_agent=ua.chrome)
+        page = await context.new_page()
         await page.goto(login_link)
         await page.is_visible(submit_button_selector)
-        await page.fill(email_field_selector, username)
+        await page.fill(email_field_selector, username, timeout=0) #does not work in headless mode...
         await page.fill(password_field_selector, password)
         await page.click(submit_button_selector)
 

@@ -26,6 +26,6 @@ async def get_pv_holdings(link: str, name: str):
     webpage_content = await get_pv_content(link, name)
     return HTMLResponse(content=webpage_content, status_code=200)
 
-# if __name__ == "__main__":
-#     import uvicorn
-#     uvicorn.run(app, host="127.0.0.1", port=8000)
+if __name__ == "__main__":
+     import uvicorn
+     uvicorn.run(app, host="127.0.0.1", port=8000)
