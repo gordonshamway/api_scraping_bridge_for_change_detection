@@ -19,7 +19,7 @@ trade_signal_selector = '#timingPeriods > div:nth-child(5) > div.card-body > tab
 
 
 async def rebuild_into_clean_html_table(html, name):
-    # rebuild in clean html table
+    # rebuild in clean html tablea
     soup = BeautifulSoup(html, 'html.parser')
 
     header_tags = soup.select('thead th')
@@ -65,6 +65,7 @@ async def get_pv_content(link, name):
         await page.is_visible(submit_button_selector)
         await page.click(submit_button_selector)
         await page.wait_for_timeout(int(timeout) * 1000)
+        await page.is_visible(trade_signal_selector)
         html = await page.inner_html(trade_signal_selector)
         result = await rebuild_into_clean_html_table(html, name)
         return result
